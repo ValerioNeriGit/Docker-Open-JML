@@ -18,4 +18,4 @@ RUN apt-get purge -y wget unzip \
 
 
 
-CMD ["java", "-jar", "/openjml/openjml.jar"]
+#CMD ["java", "-jar", "/openjml/openjml.jar"]
