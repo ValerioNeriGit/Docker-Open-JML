@@ -13,7 +13,7 @@ docker run --rm --name=jml valerioneri/openjml java -jar /openjml/openjml.jar -v
 ### How to run
 To run the OpenJML container you need to mount the directory containing your java files (let's call it *code*) and add the command you want to execute, as in the following example:
 ``` bash
-docker run --rm --name=jml -v $(pwd)/code:/code valerioneri/openjml java -jar /openjml/openjml.jar -esc /code/myFile.java
+docker run --rm --name=jml -v "$(pwd)"/code:/code valerioneri/openjml java -jar /openjml/openjml.jar -esc /code/myFile.java
 ```
 #### OpenJML Execution's options
 
@@ -28,7 +28,7 @@ Based on [OpenJML execution's option documentation ](http://www.openjml.org/docu
 
 ### How to use with docker exec
 ```
-docker run --rm --name=jml -t -d -v $(pwd)/code:/code valerioneri/openjml /bin/bash
+docker run --rm --name=jml -t -d -v "$(pwd)"/code:/code valerioneri/openjml /bin/bash
 docker exec jml  java -jar /openjml/openjml.jar -rac /code/myfile.java
 ```
 

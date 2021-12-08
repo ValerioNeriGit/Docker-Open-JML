@@ -1,16 +1,12 @@
-FROM openjdk:8-jdk-stretch
+FROM openjdk:8-jdk-bullseye
 
-RUN apt update && apt install wget unzip
+RUN apt update && apt install -y libgomp1 \
+	&& apt-get -y clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /openjml \
-    && wget https://github.com/OpenJML/OpenJML/releases/download/0.8.43/openjml-0.8.43-20191210.zip --output-document=openjml.zip \
+    && wget https://github.com/OpenJML/OpenJML/releases/download/0.8.59/openjml-0.8.59-20211116.zip --output-document=openjml.zip \
     && unzip openjml.zip -d /openjml \
     && rm openjml.zip 
-
-RUN apt-get purge -y wget unzip \
-    && apt-get -y autoremove \
-    && apt-get autoclean
-
-
 
 #CMD ["java", "-jar", "/openjml/openjml.jar"]
